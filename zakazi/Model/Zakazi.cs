@@ -14,7 +14,7 @@ namespace zakazi.Model
     
     public partial class Zakazi
     {
-        public Nullable<int> id_zakaz { get; set; }
+        public int id_zakaz { get; set; }
         public string seriya { get; set; }
         public decimal cost { get; set; }
         public Nullable<int> id_servise { get; set; }

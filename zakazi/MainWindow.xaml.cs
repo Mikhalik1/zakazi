@@ -24,27 +24,33 @@ namespace zakazi
     public partial class MainWindow : Window
     {
         Core db = new Core();
+        int vid;
         public MainWindow()
         {
+            
             InitializeComponent();
-
+            
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            var  = new Service
+            var zakazi = new Zakazi
             {
-                Title = TBoxTitle.Text,
-                Cost = decimal.Parse(TBoxCost.Text),
-                DurationInSeconds = TBoxDuration.Text,
-                Description = TBoxDescription.Text,
-                Discount = string.IsNullOrWhiteSpace(TBoxDuration.Text)
-                      ? 0 : double.Parse(TBoxDiscount.Text) / 100,
-                MainImagePath = Convert.ToInt32(_MainImagePath),
+                id_zakaz = 1,
+                seriya = "gjgf,j,hf",
+                cost = 100,
+                id_servise = 2
             };
-            db.context.Services.Add(service);
+            db.context.Zakazi.Add(zakazi);
             db.context.SaveChanges();
+        }
+
+        private void Servcombobox_chenge(object sender, SelectionChangedEventArgs e)
+        {
+            
+            vid = Convert.ToInt32(Servcombobox.SelectedValue);
         }
     }
 }

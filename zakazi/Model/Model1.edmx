@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AddZakazModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище AddZakazModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="id_servise" />
           </Key>
-          <Property Name="id_servise" Type="int" Nullable="false" />
-          <Property Name="Name_service" Type="nchar" MaxLength="10" />
+          <Property Name="id_servise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_service" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -26,11 +26,12 @@
 предупреждение 6002: В таблице или представлении "AddZakaz.dbo.Zakazi" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Zakazi">
           <Key>
+            
             <PropertyRef Name="cost" />
           </Key>
-          <Property Name="id_zakaz" Type="int" />
+          <Property Name="id_zakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="seriya" Type="nvarchar(max)" />
-          <Property Name="cost" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
           <Property Name="id_servise" Type="int" />
         </EntityType>
         <Association Name="FK_Zakazi_Service">
@@ -61,8 +62,7 @@
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AddZakazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -71,7 +71,7 @@
             <PropertyRef Name="id_servise" />
           </Key>
           <Property Name="id_servise" Type="Int32" Nullable="false" />
-          <Property Name="Name_service" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name_service" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Zakazi" Relationship="Self.FK_Zakazi_Service" FromRole="Service" ToRole="Zakazi" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -88,9 +88,9 @@
           <Key>
             <PropertyRef Name="cost" />
           </Key>
-          <Property Name="id_zakaz" Type="Int32" />
+          <Property Name="id_zakaz" Type="Int32" Nullable="false" />
           <Property Name="seriya" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="cost" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="cost" Type="Decimal" Nullable="false" />
           <Property Name="id_servise" Type="Int32" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Zakazi_Service" FromRole="Zakazi" ToRole="Service" />
         </EntityType>

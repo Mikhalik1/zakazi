@@ -16,9 +16,9 @@
             <Label Content="Серийник техники"/>
             <TextBox x:Name="seria"></TextBox>
             <Label Content="Вид услуги"/>
-            <ComboBox x:Name="vid"/>
+            <ComboBox DisplayMemberPath="Name_service" SelectedValuePath="id_servise" x:Name="Servcombobox" SelectionChanged="Servcombobox_chenge"/>
             <Label Content="Стоимость Починки"/>
-            <TextBox TextWrapping="Wrap" Text=""/>
+            <TextBox  x:Name="cost"/>
             <Button Content="Добавить Заказ" Click="Button_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
