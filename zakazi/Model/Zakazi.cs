@@ -16,7 +16,7 @@ namespace zakazi.Model
     {
         public int id_zakaz { get; set; }
         public string seriya { get; set; }
-        public decimal cost { get; set; }
+        public int cost { get; set; }
         public Nullable<int> id_servise { get; set; }
     
         public virtual Service Service { get; set; }

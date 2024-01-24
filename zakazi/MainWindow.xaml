@@ -24,7 +24,20 @@
         <StackPanel Grid.Column="1">
             <Label Content="Все заказы"/>
         </StackPanel>
-            
+        <ListView x:Name="zalkazview" Grid.Column="1"
+                  Width="450" Height="300">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=seriya}"
+                                    Header="seriya" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=cost}"
+                                    Header="cost" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=id_servise}"
+                                    Header="id_servise" Width="150"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
                         
 
     </Grid>

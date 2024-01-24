@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3b1eb3d98bd548f2bce7cfb599b40953" Name="Diagram1">
-        <EntityTypeShape EntityType="AddZakazModel.Service" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AddZakazModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AddZakazModel.Zakazi" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="AddZakazModel.FK_Zakazi_Service" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AddZakazModel.Service" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="AddZakazModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AddZakazModel.Zakazi" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="AddZakazModel.FK_Zakazi_Service1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

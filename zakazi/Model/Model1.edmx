@@ -22,19 +22,16 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "AddZakaz.dbo.Zakazi" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Zakazi">
           <Key>
-            
-            <PropertyRef Name="cost" />
+            <PropertyRef Name="id_zakaz" />
           </Key>
           <Property Name="id_zakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="seriya" Type="nvarchar(max)" />
           <Property Name="cost" Type="int" Nullable="false" />
           <Property Name="id_servise" Type="int" />
         </EntityType>
-        <Association Name="FK_Zakazi_Service">
+        <Association Name="FK_Zakazi_Service1">
           <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
           <End Role="Zakazi" Type="Self.Zakazi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -49,15 +46,8 @@
         <EntityContainer Name="Хранилище AddZakazModelContainer">
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Zakazi" EntityType="Self.Zakazi" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Zakazi].[id_zakaz] AS [id_zakaz], 
-    [Zakazi].[seriya] AS [seriya], 
-    [Zakazi].[cost] AS [cost], 
-    [Zakazi].[id_servise] AS [id_servise]
-    FROM [dbo].[Zakazi] AS [Zakazi]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Zakazi_Service" Association="Self.FK_Zakazi_Service">
+          <EntitySet Name="Zakazi" EntityType="Self.Zakazi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Zakazi_Service1" Association="Self.FK_Zakazi_Service1">
             <End Role="Service" EntitySet="Service" />
             <End Role="Zakazi" EntitySet="Zakazi" />
           </AssociationSet>
@@ -66,19 +56,28 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AddZakazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AddZakazEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Service" EntityType="AddZakazModel.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="AddZakazModel.sysdiagrams" />
+          <EntitySet Name="Zakazi" EntityType="AddZakazModel.Zakazi" />
+          <AssociationSet Name="FK_Zakazi_Service1" Association="AddZakazModel.FK_Zakazi_Service1">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Zakazi" EntitySet="Zakazi" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="id_servise" />
           </Key>
-          <Property Name="id_servise" Type="Int32" Nullable="false" />
+          <Property Name="id_servise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name_service" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Zakazi" Relationship="Self.FK_Zakazi_Service" FromRole="Service" ToRole="Zakazi" />
+          <NavigationProperty Name="Zakazi" Relationship="AddZakazModel.FK_Zakazi_Service1" FromRole="Service" ToRole="Zakazi" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -86,17 +85,17 @@
         </EntityType>
         <EntityType Name="Zakazi">
           <Key>
-            <PropertyRef Name="cost" />
+            <PropertyRef Name="id_zakaz" />
           </Key>
-          <Property Name="id_zakaz" Type="Int32" Nullable="false" />
+          <Property Name="id_zakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="seriya" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="cost" Type="Decimal" Nullable="false" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
           <Property Name="id_servise" Type="Int32" />
-          <NavigationProperty Name="Service" Relationship="Self.FK_Zakazi_Service" FromRole="Zakazi" ToRole="Service" />
+          <NavigationProperty Name="Service" Relationship="AddZakazModel.FK_Zakazi_Service1" FromRole="Zakazi" ToRole="Service" />
         </EntityType>
-        <Association Name="FK_Zakazi_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
-          <End Role="Zakazi" Type="Self.Zakazi" Multiplicity="*" />
+        <Association Name="FK_Zakazi_Service1">
+          <End Type="AddZakazModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="AddZakazModel.Zakazi" Role="Zakazi" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
               <PropertyRef Name="id_servise" />
@@ -106,15 +105,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AddZakazEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Service" EntityType="Self.Service" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Zakazi" EntityType="Self.Zakazi" />
-          <AssociationSet Name="FK_Zakazi_Service" Association="Self.FK_Zakazi_Service">
-            <End Role="Service" EntitySet="Service" />
-            <End Role="Zakazi" EntitySet="Zakazi" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -124,29 +114,29 @@
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="AddZakazModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="id_servise" ColumnName="id_servise" />
                 <ScalarProperty Name="Name_service" ColumnName="Name_service" />
+                <ScalarProperty Name="id_servise" ColumnName="id_servise" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="AddZakazModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zakazi">
             <EntityTypeMapping TypeName="AddZakazModel.Zakazi">
               <MappingFragment StoreEntitySet="Zakazi">
-                <ScalarProperty Name="id_zakaz" ColumnName="id_zakaz" />
-                <ScalarProperty Name="seriya" ColumnName="seriya" />
-                <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="id_servise" ColumnName="id_servise" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="seriya" ColumnName="seriya" />
+                <ScalarProperty Name="id_zakaz" ColumnName="id_zakaz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
