@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zakazi", "zakazi\zakazi.csproj", "{718909ED-4BED-45AB-BC0C-367070F3A0A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zakazclass", "zakazclass\zakazclass.csproj", "{A73F7A8A-D1B3-4571-96D2-6C40D894E3EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zakazitest", "zakazitest\zakazitest.csproj", "{A6C081C9-0AEC-4C1C-A486-748F402A265B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{718909ED-4BED-45AB-BC0C-367070F3A0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{718909ED-4BED-45AB-BC0C-367070F3A0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{718909ED-4BED-45AB-BC0C-367070F3A0A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73F7A8A-D1B3-4571-96D2-6C40D894E3EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73F7A8A-D1B3-4571-96D2-6C40D894E3EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73F7A8A-D1B3-4571-96D2-6C40D894E3EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73F7A8A-D1B3-4571-96D2-6C40D894E3EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C081C9-0AEC-4C1C-A486-748F402A265B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C081C9-0AEC-4C1C-A486-748F402A265B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C081C9-0AEC-4C1C-A486-748F402A265B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C081C9-0AEC-4C1C-A486-748F402A265B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
