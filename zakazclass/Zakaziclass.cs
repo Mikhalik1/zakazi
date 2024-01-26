@@ -11,7 +11,10 @@ namespace zakazclass
     
     public class Zakaziclass
     {
-      
+        public string delete_zakaz(int id)
+        {
+
+        }
         public string Add_zakaz(string seria,string cost,int vid)
         {  
             Core db = new Core(); //Подключение к бд

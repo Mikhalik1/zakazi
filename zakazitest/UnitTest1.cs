@@ -35,8 +35,11 @@ namespace zakazitest
 
             Assert.AreEqual(resulit, prover);//Метод проверки
         }
+        /// <summary>
+        /// Тест на пробел
+        /// </summary>
         [TestMethod]
-        public void TestMethod_Space_False()//Тест на пробел
+        public void TestMethod_Space_False()//аыаыа
         {
             string seria = " ";
             string cost = "2202";
