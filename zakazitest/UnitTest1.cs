@@ -108,7 +108,30 @@ namespace zakazitest
             Assert.AreEqual(resulit, prover);//Метод проверки
         }
 
+        [TestMethod]
+        public void TestMethod_NotVid_False1()//Тест на неправильный вид
+        {
+            string seria = "1234ab11";
+            Zakaziclass zakcl = new Zakaziclass();
 
+            bool resulit = zakcl.Remove_zakaz(seria);//обращение к методу
+
+            Assert.IsTrue(resulit);//Метод проверки
+        }
+
+        [TestMethod]
+        public void TestMethod_Edit()//Тест на неправильный вид
+        {
+            string seria = "gjgfjhf";
+            string cost = "2202";
+            int vid = 3;
+            string prover = "Запись изменена";
+            Zakaziclass zakcl = new Zakaziclass();
+
+            string resulit = zakcl.Edit_zakaz(seria, cost, vid);//обращение к методу
+
+            Assert.AreEqual(resulit, prover);//Метод проверки
+        }
 
 
     }
